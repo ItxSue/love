@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine's Day 💖</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -11,6 +12,7 @@
             background-color: #ffccdc;
             color: #ff4081;
             transition: all 0.5s ease;
+            background-image: url('https://www.transparenttextures.com/patterns/hearts.png');
         }
         .container {
             margin-top: 20vh;
@@ -33,39 +35,48 @@
             display: none;
         }
         img {
-            width: 200px;
+            width: 250px;
             margin-top: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(255, 64, 129, 0.5);
         }
         .cute-text {
-            font-size: 50px;
+            font-size: 60px;
             font-weight: bold;
-            text-shadow: 3px 3px 5px rgba(255, 64, 129, 0.5);
+            text-shadow: 4px 4px 6px rgba(255, 64, 129, 0.6);
+            color: #ff0033;
+        }
+        .heart-bg {
+            background: url('https://media.giphy.com/media/l4FGGafcOHmrlQxG0/giphy.gif') center center/cover;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 64, 129, 0.7);
         }
     </style>
 </head>
 <body>
-    <div class="container" id="page1">
+    <div class="container heart-bg" id="page1">
         <h1 class="cute-text">Hello Baby &lt;3</h1>
         <br>
-        <button class="button" onclick="nextPage()">Next</button>
+        <button class="button btn btn-lg" onclick="nextPage()">Next</button>
     </div>
 
-    <div class="container hidden" id="page2">
+    <div class="container heart-bg hidden" id="page2">
         <h1>Will you be my Valentine? 💕</h1>
-        <button class="button" onclick="yesAnswer()">Yes</button>
-        <button class="button" onclick="noAnswer()">No</button>
+        <button class="button btn btn-lg" onclick="yesAnswer()">Yes</button>
+        <button class="button btn btn-lg" onclick="noAnswer()">No</button>
     </div>
 
-    <div class="container hidden" id="yesPage">
+    <div class="container heart-bg hidden" id="yesPage">
         <h1>I LOVE YOU SO MUCH!! 😘💖</h1>
         <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="hug">
     </div>
 
-    <div class="container hidden" id="noPage">
+    <div class="container heart-bg hidden" id="noPage">
         <h1>😢 Are you sure? Pretty please?</h1>
         <img src="https://placedog.net/500" alt="sad dog">
         <br>
-        <button class="button" onclick="backToAsk()">Okay...</button>
+        <button class="button btn btn-lg" onclick="backToAsk()">Okay...</button>
     </div>
 
     <script>
