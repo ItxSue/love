@@ -74,16 +74,18 @@
     <div class="hearts" id="heartsContainer"></div>
     <div class="container" id="mainPage">
         <h1 class="valentine-text">Will you be my Valentine? 💕</h1>
-        <button class="button btn btn-lg" onclick="showYesPage()">Yes</button>
-        <button class="button btn btn-lg" onclick="showNoPage()">No</button>
+        <button class="button btn btn-lg" onclick="showPage('yesPage')">Yes</button>
+        <button class="button btn btn-lg" onclick="showPage('noPage')">No</button>
     </div>
 
     <div class="container hidden" id="yesPage">
         <h1 class="valentine-text">YAY! I LOVE YOU! 💖</h1>
+        <button class="button btn btn-lg" onclick="showPage('mainPage')">Go Back</button>
     </div>
 
     <div class="container hidden" id="noPage">
         <h1 class="valentine-text">You have no choice, I LOVE YOU ANYWAY! 😘</h1>
+        <button class="button btn btn-lg" onclick="showPage('mainPage')">Go Back</button>
     </div>
 
     <script>
@@ -97,13 +99,11 @@
         }
         setInterval(createHeart, 200);
 
-        function showYesPage() {
-            document.getElementById("mainPage").classList.add("hidden");
-            document.getElementById("yesPage").classList.remove("hidden");
-        }
-        function showNoPage() {
-            document.getElementById("mainPage").classList.add("hidden");
-            document.getElementById("noPage").classList.remove("hidden");
+        function showPage(pageId) {
+            document.querySelectorAll('.container').forEach(page => {
+                page.classList.add('hidden');
+            });
+            document.getElementById(pageId).classList.remove('hidden');
         }
     </script>
 </body>
