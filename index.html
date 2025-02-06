@@ -36,11 +36,16 @@
             width: 200px;
             margin-top: 20px;
         }
+        .cute-text {
+            font-size: 50px;
+            font-weight: bold;
+            text-shadow: 3px 3px 5px rgba(255, 64, 129, 0.5);
+        }
     </style>
 </head>
 <body>
     <div class="container" id="page1">
-        <h1>Hello Baby &lt;3</h1>
+        <h1 class="cute-text">Hello Baby &lt;3</h1>
         <br>
         <button class="button" onclick="nextPage()">Next</button>
     </div>
@@ -58,6 +63,7 @@
 
     <div class="container hidden" id="noPage">
         <h1>😢 Are you sure? Pretty please?</h1>
+        <img src="https://media.giphy.com/media/l3V0j3ytFyGHqiOli/giphy.gif" alt="begging cute eyes">
         <br>
         <button class="button" onclick="backToAsk()">Okay...</button>
     </div>
