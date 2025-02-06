@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day 💖</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #ffccdc;
+            color: #ff4081;
+            transition: all 0.5s ease;
+        }
+        .container {
+            margin-top: 20vh;
+        }
+        .button {
+            background-color: #ff4081;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 20px;
+            margin: 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .button:hover {
+            background-color: #ff1c68;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="page1">
+        <h1>Hello Baby &lt;3</h1>
+        <button class="button" onclick="nextPage()">Next</button>
+    </div>
 
+    <div class="container hidden" id="page2">
+        <h1>Will you be my Valentine? 💕</h1>
+        <button class="button" onclick="yesAnswer()">Yes</button>
+        <button class="button" onclick="noAnswer()">No</button>
+    </div>
+
+    <div class="container hidden" id="yesPage">
+        <h1>I LOVE YOU SO MUCH!! 😘💖</h1>
+    </div>
+
+    <div class="container hidden" id="noPage">
+        <h1>😢 Please say yes...</h1>
+        <button class="button" onclick="backToAsk()">Okay...</button>
+    </div>
+
+    <script>
+        function nextPage() {
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.remove('hidden');
+        }
+        function yesAnswer() {
+            document.getElementById('page2').classList.add('hidden');
+            document.getElementById('yesPage').classList.remove('hidden');
+        }
+        function noAnswer() {
+            document.getElementById('page2').classList.add('hidden');
+            document.getElementById('noPage').classList.remove('hidden');
+        }
+        function backToAsk() {
+            document.getElementById('noPage').classList.add('hidden');
+            document.getElementById('page2').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
+ 
