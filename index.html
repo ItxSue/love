@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Day 💖</title>
+    <title>Valentine's Surprise 💖</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -12,7 +12,8 @@
             background-color: #ffccdc;
             color: #ff4081;
             transition: all 0.5s ease;
-            background-image: url('/mnt/data/360_F_246012352_D5gxGRF4hD2Tpbe4ZoSW7yBZTPVnCSFF.jpg'); background-size: cover;
+            background-image: url('https://i.imgur.com/lYpT5b8.jpg'); /* Replace with a heart-patterned background */
+            background-size: cover;
         }
         .container {
             margin-top: 20vh;
@@ -46,36 +47,28 @@
             text-shadow: 4px 4px 6px rgba(255, 64, 129, 0.6);
             color: #ff0033;
         }
-        .heart-bg {
-            background: url('https://media.giphy.com/media/l4FGGafcOHmrlQxG0/giphy.gif') center center/cover;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 0 20px rgba(255, 64, 129, 0.7);
-        }
     </style>
 </head>
 <body>
-    <div class="container heart-bg" id="page1">
+    <div class="container" id="page1">
         <h1 class="cute-text">Hello Baby &lt;3</h1>
-        <br>
         <button class="button btn btn-lg" onclick="nextPage()">Next</button>
     </div>
 
-    <div class="container heart-bg hidden" id="page2">
+    <div class="container hidden" id="page2">
         <h1>Will you be my Valentine? 💕</h1>
         <button class="button btn btn-lg" onclick="yesAnswer()">Yes</button>
         <button class="button btn btn-lg" onclick="noAnswer()">No</button>
     </div>
 
-    <div class="container heart-bg hidden" id="yesPage">
+    <div class="container hidden" id="yesPage">
         <h1>I LOVE YOU SO MUCH!! 😘💖</h1>
         <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="hug">
     </div>
 
-    <div class="container heart-bg hidden" id="noPage">
+    <div class="container hidden" id="noPage">
         <h1>😢 Are you sure? Pretty please?</h1>
-        <img src="https://placedog.net/500" alt="sad dog">
-        <br>
+        <img src="https://i.imgur.com/b1W2vlC.jpg" alt="sad puppy">
         <button class="button btn btn-lg" onclick="backToAsk()">Okay...</button>
     </div>
 
