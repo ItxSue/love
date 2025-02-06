@@ -32,6 +32,9 @@
         .button:hover {
             background-color: #ff1c68;
         }
+        .hidden {
+            display: none;
+        }
         .valentine-text {
             font-size: 50px;
             font-weight: bold;
@@ -69,10 +72,18 @@
 </head>
 <body>
     <div class="hearts" id="heartsContainer"></div>
-    <div class="container">
-        <h1 class="valentine-text" id="valentineText">Will you be my Valentine? 💕</h1>
-        <button class="button btn btn-lg" id="yesButton">Yes</button>
-        <button class="button btn btn-lg" id="noButton">No</button>
+    <div class="container" id="mainPage">
+        <h1 class="valentine-text">Will you be my Valentine? 💕</h1>
+        <button class="button btn btn-lg" onclick="showYesPage()">Yes</button>
+        <button class="button btn btn-lg" onclick="showNoPage()">No</button>
+    </div>
+
+    <div class="container hidden" id="yesPage">
+        <h1 class="valentine-text">YAY! I LOVE YOU! 💖</h1>
+    </div>
+
+    <div class="container hidden" id="noPage">
+        <h1 class="valentine-text">You have no choice, I LOVE YOU ANYWAY! 😘</h1>
     </div>
 
     <script>
@@ -86,13 +97,14 @@
         }
         setInterval(createHeart, 200);
 
-        document.getElementById("yesButton").addEventListener("click", function() {
-            document.getElementById("valentineText").innerHTML = "YAY! I LOVE YOU! 💖";
-        });
-        
-        document.getElementById("noButton").addEventListener("click", function() {
-            document.getElementById("valentineText").innerHTML = "You have no choice, I LOVE YOU ANYWAY! 😘";
-        });
+        function showYesPage() {
+            document.getElementById("mainPage").classList.add("hidden");
+            document.getElementById("yesPage").classList.remove("hidden");
+        }
+        function showNoPage() {
+            document.getElementById("mainPage").classList.add("hidden");
+            document.getElementById("noPage").classList.remove("hidden");
+        }
     </script>
 </body>
 </html>
