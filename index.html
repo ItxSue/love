@@ -32,9 +32,6 @@
         .button:hover {
             background-color: #ff1c68;
         }
-        .hidden {
-            display: none;
-        }
         .valentine-text {
             font-size: 50px;
             font-weight: bold;
@@ -73,9 +70,9 @@
 <body>
     <div class="hearts" id="heartsContainer"></div>
     <div class="container">
-        <h1 class="valentine-text">Will you be my Valentine? 💕</h1>
-        <button class="button btn btn-lg" onclick="showLove()">Yes</button>
-        <button class="button btn btn-lg" onclick="showLoveAnyway()">No</button>
+        <h1 class="valentine-text" id="valentineText">Will you be my Valentine? 💕</h1>
+        <button class="button btn btn-lg" id="yesButton">Yes</button>
+        <button class="button btn btn-lg" id="noButton">No</button>
     </div>
 
     <script>
@@ -89,13 +86,13 @@
         }
         setInterval(createHeart, 200);
 
-        function showLove() {
-            document.querySelector('.valentine-text').innerHTML = "YAY! I LOVE YOU! 💖";
-        }
-        function showLoveAnyway() {
-            document.querySelector('.valentine-text').innerHTML = "You have no choice, I LOVE YOU ANYWAY! 😘";
-        }
+        document.getElementById("yesButton").addEventListener("click", function() {
+            document.getElementById("valentineText").innerHTML = "YAY! I LOVE YOU! 💖";
+        });
+        
+        document.getElementById("noButton").addEventListener("click", function() {
+            document.getElementById("valentineText").innerHTML = "You have no choice, I LOVE YOU ANYWAY! 😘";
+        });
     </script>
 </body>
 </html>
- 
