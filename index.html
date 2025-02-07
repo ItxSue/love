@@ -33,7 +33,7 @@
             background-color: #ff1c68;
         }
         .hidden {
-            display: none;
+            display: none !important;
         }
         .valentine-text {
             font-size: 50px;
@@ -73,7 +73,7 @@
 <body>
     <div class="hearts" id="heartsContainer"></div>
     <div class="container page" id="mainPage">
-        <h1 class="valentine-text">Will you be my hValentine? 💕</h1>
+        <h1 class="valentine-text">Will you be my Valentine? 💕</h1>
         <button class="button btn btn-lg" onclick="showPage('yesPage')">Yes</button>
         <button class="button btn btn-lg" onclick="showPage('noPage')">No</button>
     </div>
@@ -100,7 +100,9 @@
         setInterval(createHeart, 200);
 
         function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
+            document.getElementById('mainPage').classList.add('hidden');
+            document.getElementById('yesPage').classList.add('hidden');
+            document.getElementById('noPage').classList.add('hidden');
             document.getElementById(pageId).classList.remove('hidden');
         }
     </script>
