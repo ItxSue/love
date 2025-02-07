@@ -50,67 +50,39 @@
             0% { text-shadow: 0 0 10px rgba(255, 64, 129, 0.8), 0 0 20px rgba(255, 64, 129, 0.5); }
             100% { text-shadow: 0 0 15px rgba(255, 64, 129, 1), 0 0 25px rgba(255, 64, 129, 0.7); }
         }
-        .hearts {
+        .heart-trail {
             position: absolute;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-        }
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 12px;
+            height: 12px;
             background-color: red;
             clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 50% 80%, 20% 100%, 0% 30%);
-            opacity: 0.7;
-            animation: float 5s infinite ease-in-out;
-        }
-        @keyframes float {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-100vh); opacity: 0; }
-        }
-        .night-mode {
-            background-color: #1a1a2e !important;
-            color: #ffccdc !important;
-        }
-        .night-mode .stars {
-            display: block;
-        }
-        .toggle-container {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-        .stars {
-            display: none;
-            position: fixed;
-            width: 100%;
-            height: 100vh;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-        }
-        .star {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
             opacity: 0.8;
-            animation: twinkle 2s infinite alternate;
+            pointer-events: none;
+            animation: fadeOut 1s forwards;
         }
-        @keyframes twinkle {
-            0% { opacity: 0.3; }
-            100% { opacity: 1; }
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.5); }
+        }
+            .heart-trail {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: red;
+            clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 50% 80%, 20% 100%, 0% 30%);
+            opacity: 0.8;
+            pointer-events: none;
+            animation: fadeOut 1s forwards;
+        }
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.5); }
         }
     </style>
 </head>
 <body>
     <div class="toggle-container">
-        <button class="button btn btn-sm" onclick="toggleNightMode()">🌙Night Mode</button>
+        <button class="button btn btn-sm" onclick="toggleNightMode()">🌙 Toggle Night Mode</button>
     </div>
     <div class="hearts" id="heartsContainer"></div>
     <div class="stars" id="starsContainer"></div>
@@ -131,42 +103,39 @@
     </div>
 
     <script>
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-            document.getElementById('heartsContainer').appendChild(heart);
-            setTimeout(() => heart.remove(), 5000);
-        }
-        setInterval(createHeart, 200);
-
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
             document.getElementById(pageId).classList.remove('hidden');
         }
 
-        function toggleNightMode() {
-            document.body.classList.toggle("night-mode");
-            if (document.body.classList.contains("night-mode")) {
-                generateStars();
-            } else {
-                document.getElementById("starsContainer").innerHTML = "";
+        function triggerConfetti() {
+            for (let i = 0; i < 300; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti-piece');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = Math.random() * 50 + 'px';
+                confetti.style.backgroundColor = ["pink", "red", "hotpink", "white"][Math.floor(Math.random() * 4)];
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 2000);
             }
         }
 
-        function generateStars() {
-            const starContainer = document.getElementById("starsContainer");
-            starContainer.innerHTML = "";
-            for (let i = 0; i < 50; i++) {
-                const star = document.createElement("div");
-                star.classList.add("star");
-                star.style.left = Math.random() * 100 + "vw";
-                star.style.top = Math.random() * 100 + "vh";
-                star.style.animationDuration = Math.random() * 2 + 1 + "s";
-                starContainer.appendChild(star);
-            }
-        }
+        document.addEventListener("mousemove", function(e) {
+            const heart = document.createElement("div");
+            heart.classList.add("heart-trail");
+            heart.style.left = `${e.clientX}px`;
+            heart.style.top = `${e.clientY}px`;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1000);
+        });
+            document.addEventListener("mousemove", function(e) {
+            const heart = document.createElement("div");
+            heart.classList.add("heart-trail");
+            heart.style.left = `${e.clientX}px`;
+            heart.style.top = `${e.clientY}px`;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1000);
+        });
     </script>
 </body>
 </html>
