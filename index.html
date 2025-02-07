@@ -33,7 +33,7 @@
             background-color: #ff1c68;
         }
         .hidden {
-            display: none !important;
+            display: none;
         }
         .valentine-text {
             font-size: 50px;
@@ -72,18 +72,18 @@
 </head>
 <body>
     <div class="hearts" id="heartsContainer"></div>
-    <div class="container" id="mainPage">
+    <div class="container page" id="mainPage">
         <h1 class="valentine-text">Will you be my Valentine? 💕</h1>
         <button class="button btn btn-lg" onclick="showPage('yesPage')">Yes</button>
         <button class="button btn btn-lg" onclick="showPage('noPage')">No</button>
     </div>
 
-    <div class="container hidden" id="yesPage">
+    <div class="container page hidden" id="yesPage">
         <h1 class="valentine-text">YAY! I LOVE YOU! 💖</h1>
         <button class="button btn btn-lg" onclick="showPage('mainPage')">Go Back</button>
     </div>
 
-    <div class="container hidden" id="noPage">
+    <div class="container page hidden" id="noPage">
         <h1 class="valentine-text">You have no choice, I LOVE YOU ANYWAY! 😘</h1>
         <button class="button btn btn-lg" onclick="showPage('mainPage')">Go Back</button>
     </div>
@@ -100,12 +100,9 @@
         setInterval(createHeart, 200);
 
         function showPage(pageId) {
-            document.getElementById('mainPage').classList.add('hidden');
-            document.getElementById('yesPage').classList.add('hidden');
-            document.getElementById('noPage').classList.add('hidden');
+            document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
             document.getElementById(pageId).classList.remove('hidden');
         }
     </script>
 </body>
 </html>
- 
