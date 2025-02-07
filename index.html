@@ -72,13 +72,32 @@
                 opacity: 0;
             }
         }
+        .confetti-heart {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: pink;
+            clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 50% 80%, 20% 100%, 0% 30%);
+            opacity: 0.8;
+            animation: confetti 1.5s ease-out forwards;
+        }
+        @keyframes confetti {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100px) scale(0);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="hearts" id="heartsContainer"></div>
     <div class="container page" id="mainPage">
         <h1 class="valentine-text">Will you be my Valentine? 💕</h1>
-        <button class="button btn btn-lg" onclick="showPage('yesPage')">Yes</button>
+        <button class="button btn btn-lg" onclick="showPage('yesPage'); triggerConfetti()">Yes</button>
         <button class="button btn btn-lg" onclick="showPage('noPage')">No</button>
     </div>
 
@@ -106,6 +125,17 @@
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
             document.getElementById(pageId).classList.remove('hidden');
+        }
+
+        function triggerConfetti() {
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti-heart');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = Math.random() * 50 + 'px';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 1500);
+            }
         }
     </script>
 </body>
